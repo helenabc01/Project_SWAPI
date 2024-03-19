@@ -20,7 +20,7 @@ const SaberContainer = styled.div`
     transform: translateX(-50%);
     width: 150px;
     height: 300px;
-    transform: rotate(90deg);
+    transform: rotate(-90deg);
 `;
 
 const SaberHandle = styled.div`
@@ -38,7 +38,6 @@ const SaberHandle = styled.div`
 const SaberBlade = styled.div`
     padding-top: 50px;
     position: absolute;
-    top: 0;
     left: 50%;
     margin-bottom: 70%;
     transform: translateX(-50%);
