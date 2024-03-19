@@ -31,7 +31,7 @@ function Home() {
     
     return (
         <Container>
-            <h1>Filmes: Star Wars</h1>
+            <h1>Movies: Star Wars</h1>
             <MovieList>
                 {movies.map((movie, index) => {
                     return (
