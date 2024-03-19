@@ -11,7 +11,7 @@ export const Container = styled.div`
 export const MovieList = styled.ul`
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     column-gap: 3rem;
     row-gap: 4rem;
 
@@ -23,7 +23,7 @@ export const Movie = styled.li`
     align-items: center; 
 
 img {
-    width: 180px;
+    width: 210px;
     border-radius: 1rem;
     margin: 2rem;
     padding: 0.5rem

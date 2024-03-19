@@ -2,9 +2,7 @@ import { Link } from "react-router-dom";
 import { Container, MovieList, Movie } from "./styles.js";
 import { useState, useEffect} from "react";
 
-
 function Home() {
-
     const [movies, setMovies] = useState([]);
 
     useEffect(() => {
@@ -12,31 +10,44 @@ function Home() {
             .then(response => response.json())
             .then(data => {
                 const sortedMovies = data.results.sort((a, b) => {
-                    return a.episode_id - b.episode_id;     
+                    return a.release_date > b.release_date ? 1 : -1;     
                 });
-                setMovies(sortedMovies);
+    
+                const ImagesPromises = sortedMovies.map((movie, index) => {
+                    return fetch(`https://starwarspicapi.onrender.com/pictures/star-wars/${index +1}`)
+                        .then(response => response.json())
+                        .then(imageData => {
+                            console.log(imageData); 
+                            movie.nome = imageData.nome;
+                            return movie;
+                        });                        
+                });
+                Promise.all(ImagesPromises)
+                    .then(moviesWithImages => {
+                        setMovies(moviesWithImages);
+                    })
             });
     }, []);
     
     return (
         <Container>
-            <h1>Filmes</h1>
+            <h1>Filmes: Star Wars</h1>
             <MovieList>
-                {movies.map(movie => {
+                {movies.map((movie, index) => {
                     return (
                         <Movie key={movie.episode_id}>
-                            <Link to={`/details/${movie.episode_id}`}>
-                            <img src="/posterMovie.jpg" alt={movie.title}></img>
+                            <Link to={`/details/${index + 1}`}>
+                                <img src={movie.nome} alt={movie.title}></img>
                             </Link>
-                        <span>{movie.title}</span>
-                        <span>{movie.episode_id}</span>
+                            <span>{movie.title}</span>
                         </Movie>
                     )
                 })}
-
+                 <img src=""></img>
+                    
             </MovieList>
         </Container>
     );
 }
 
-export default Home
+export default Home;
