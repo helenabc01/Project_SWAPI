@@ -32,15 +32,18 @@ const SaberHandle = styled.div`
     height: 100px;
     background-color: #333;
     border-radius: 12.5px;
+    z-index: 2;
 `;
 
 const SaberBlade = styled.div`
+    padding-top: 50px;
     position: absolute;
     top: 0;
     left: 50%;
+    margin-bottom: 70%;
     transform: translateX(-50%);
     width: 10px;
-    height: 50%;
+    height: 80%;
     background-color: ${props => props.color || '#00f'};
     border-radius: 5px;
     filter: blur(2.5px);
