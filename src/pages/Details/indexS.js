@@ -24,7 +24,7 @@ const SaberContainer = styled.div`
 `;
 
 const SaberHandle = styled.div`
-    position: absolute;
+    position: relative;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -39,10 +39,10 @@ const SaberBlade = styled.div`
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 5px;
+    width: 10px;
     height: 50%;
     background-color: ${props => props.color || '#00f'};
-    border-radius: 2.5px;
+    border-radius: 5px;
     filter: blur(2.5px);
     animation: ${glow} 1s infinite linear;
 `;
@@ -52,6 +52,7 @@ const Sabre = ({ color }) => {
         <SaberContainer>
             <SaberHandle />
             <SaberBlade color={color} />
+            <SaberBlade color="#999" />
         </SaberContainer>
     );
 };
